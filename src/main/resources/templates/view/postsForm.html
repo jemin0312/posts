@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>전체 게시물 조회</title>
+
+    <link  href="../css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="container" style="max-width: 600px">
+
+    <div class="py-4 text-center">
+        <h2>전체 게시물</h2>
+    </div>
+
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>제목</th>
+            <th>작성자</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="posts : ${postsList}">
+            <td><a href="/html/postsForm.html" th:href="@{/view/posts/{postsid}(postsid = ${posts.id})}" th:text="${posts.id}">5</a></td>
+            <td th:text="${posts.title}">6</td>
+            <td th:text="${posts.author}">8</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <hr class="my-4">
+
+    <div class="row">
+       <div class="col"> <button onclick="location.href='/html/postsForm.html'" th:onclick="|location.href='@{/view/posts/addForm}'|" class="w-100 btn btn-primary">게시글 추가</button></div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

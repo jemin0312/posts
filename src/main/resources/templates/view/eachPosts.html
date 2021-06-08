@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시물 상세정보</title>
+
+    <link  href="../css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+
+
+</head>
+<body>
+
+<div class="container" style="max-width: 800px">
+
+    <div class="py-4 text-center">
+        <h2>게시글 상세</h2>
+    </div>
+
+
+    <form action="html/postsForm.html" th:action method="post">
+
+        <label for="title">ID</label>
+        <input type="text" name="id" id="id" placeholder="제목을 입력하세요" class="form-control" readonly value="ID" th:value="${posts.id}">
+
+        <label for="title">제목</label>
+        <input type="text" name="title" id="title" placeholder="제목을 입력하세요" class="form-control" readonly value="제목" th:value="${posts.title}">
+
+        <label for="content">본문</label>
+        <textarea name="content" id="content" cols="30" rows="10"  class="form-control"  readonly th:text="${posts.content}">hi</textarea>
+
+
+        <label for="author">작성자</label>
+        <input type="text" name="author" id="author" placeholder="작성자을 입력하세요" class="form-control" readonly value="작성자" th:value="${posts.author}">
+
+        <hr class="my-2">
+
+    </form>
+
+    <div class="row">
+        <div class="col">
+            <button type="button" onclick="location.href='/html/postsForm/'" th:onclick="|location.href='@{/view/posts}'|" class="w-100 btn btn-primary">홈으로</button>
+        </div>
+        <div class="col">
+            <button type="button" onclick="location.href='/html/postsForm/'" th:onclick="|location.href='@{/view/posts/{postsid}/edit(postsid=${posts.id})}'|" class="w-100 btn btn-success">수정하기</button>
+        </div>
+        <div class="col">
+            <button type="button" onclick="location.href='/html/postsForm/'" th:onclick="|location.href='@{/view/posts/{postsid}/delete(postsid=${posts.id})}'|" class="w-100 btn btn-danger">삭제하기</button>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+</div>
+
+</body>
+
+</html>
